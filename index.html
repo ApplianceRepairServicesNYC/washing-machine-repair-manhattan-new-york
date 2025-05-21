@@ -305,7 +305,18 @@
             margin-bottom: 0.5rem;
             text-align: left; /* Align text within each item to the left */
         }
-        .neighborhood-item span {font-weight: 600; color: #1E3A8A; margin-right: 0.5rem;}
+        .neighborhood-item h3 { /* Style for Neighborhood Name */
+            font-size: 1rem; /* Adjust as needed */
+            color: #1E3A8A;
+            margin-bottom: 0.2rem;
+            display: inline-block; /* Keep on same line as zip if needed */
+        }
+        .neighborhood-item h4 { /* Style for Zip Code */
+            font-size: 0.9rem; /* Adjust as needed */
+            color: #6B7280;
+            display: inline-block; /* Keep on same line as neighborhood if needed */
+            margin-left: 0.5rem; /* Space between neighborhood and zip */
+        }
         @media (max-width: 768px) {
             .neighborhood-dropdown {max-height: 200px; }
         }
@@ -733,7 +744,7 @@
                 <div class="section-content active" id="servicesContent">
                     <div class="services-grid">
                         <div class="service-item">
-                            <button class="cta-button" onclick="toggleSection('washerGeneralContent')" aria-label="Toggle general washing machine repair details">
+                            <button class="cta-button" id="washerGeneralButton" onclick="toggleSection('washerGeneralContent')" aria-label="Toggle general washing machine repair details">
                                 <span class="icon">🧺</span>
                                 <h3>Washing Machine Repair Service</h3>
                             </button>
@@ -757,7 +768,7 @@
                             </div>
                         </div>
                         <div class="service-item">
-                            <button class="cta-button" onclick="toggleSection('frontLoadWasherContent')" aria-label="Toggle front load washing machine repair details">
+                            <button class="cta-button" id="frontLoadWasherButton" onclick="toggleSection('frontLoadWasherContent')" aria-label="Toggle front load washing machine repair details">
                                 <span class="icon">🌀</span>
                                 <h3>Front Load Washer Repair</h3>
                             </button>
@@ -789,7 +800,7 @@
                             </div>
                         </div>
                         <div class="service-item">
-                            <button class="cta-button" onclick="toggleSection('topLoadWasherContent')" aria-label="Toggle top load washing machine repair details">
+                            <button class="cta-button" id="topLoadWasherButton" onclick="toggleSection('topLoadWasherContent')" aria-label="Toggle top load washing machine repair details">
                                 <span class="icon">⬆️</span>
                                 <h3>Top Load Washer Repair</h3>
                             </button>
@@ -821,7 +832,7 @@
                             </div>
                         </div>
                         <div class="service-item">
-                            <button class="cta-button" onclick="toggleSection('washerDryerComboContent')" aria-label="Toggle washer dryer combo repair details">
+                            <button class="cta-button" id="washerDryerComboButton" onclick="toggleSection('washerDryerComboContent')" aria-label="Toggle washer dryer combo repair details">
                                 <span class="icon">🔄</span>
                                 <h3>Washer Dryer Combo Repair</h3>
                             </button>
@@ -853,7 +864,7 @@
                             </div>
                         </div>
                         <div class="service-item">
-                            <button class="cta-button" onclick="toggleSection('residentialWasherContent')" aria-label="Toggle residential washing machine repair details">
+                            <button class="cta-button" id="residentialWasherButton" onclick="toggleSection('residentialWasherContent')" aria-label="Toggle residential washing machine repair details">
                                 <span class="icon">🏠</span>
                                 <h3>Residential Washer Repair</h3>
                             </button>
@@ -886,7 +897,7 @@
                             </div>
                         </div>
                         <div class="service-item">
-                            <button class="cta-button" onclick="toggleSection('commercialWasherContent')" aria-label="Toggle commercial washing machine repair details">
+                            <button class="cta-button" id="commercialWasherButton" onclick="toggleSection('commercialWasherContent')" aria-label="Toggle commercial washing machine repair details">
                                 <span class="icon">🏢</span>
                                 <h3>Commercial Washer Repair</h3>
                             </button>
@@ -918,7 +929,7 @@
                             </div>
                         </div>
                         <div class="service-item">
-                            <button class="cta-button" onclick="toggleSection('portableWasherContent')" aria-label="Toggle portable washing machine repair details">
+                            <button class="cta-button" id="portableWasherButton" onclick="toggleSection('portableWasherContent')" aria-label="Toggle portable washing machine repair details">
                                 <span class="icon">📦</span>
                                 <h3>Portable Washer Repair</h3>
                             </button>
@@ -950,7 +961,7 @@
                             </div>
                         </div>
                         <div class="service-item">
-                            <button class="cta-button" onclick="toggleSection('stackedWasherContent')" aria-label="Toggle stacked laundry center washer repair details">
+                            <button class="cta-button" id="stackedWasherButton" onclick="toggleSection('stackedWasherContent')" aria-label="Toggle stacked laundry center washer repair details">
                                 <span class="icon">🧺⬆️</span>
                                 <h3>Stacked Laundry Center Washer Repair</h3>
                             </button>
@@ -991,72 +1002,270 @@
                 <div class="section-content" id="serviceAreasContent">
                     <p>Offering top-tier washing machine repair in Manhattan, New York, including front load, top load, combo, residential, commercial, portable, and stacked washing machine repairs with same-day service across all Manhattan, New York neighborhoods listed below. Contact us for expert washing machine repair across Manhattan, New York.</p>
                     <div class="neighborhood-dropdown">
-                        <h3>Alphabet City</h3> - 10009<br>
-                        <h3>Battery Park City</h3> - 10280, 10281, 10282<br>
-                        <h3>Bloomingdale</h3> - 10024, 10025<br>
-                        <h3>Bowery</h3> - 10002, 10012, 10013<br>
-                        <h3>Bryant Park</h3> - 10018<br>
-                        <h3>Carnegie Hill</h3> - 10128<br>
-                        <h3>Central Harlem</h3> - 10026, 10027, 10030, 10037, 10039<br>
-                        <h3>Central Park South</h3> - 10019<br>
-                        <h3>Chelsea</h3> - 10001, 10011<br>
-                        <h3>Chinatown</h3> - 10002, 10013, 10038<br>
-                        <h3>Civic Center</h3> - 10007, 10038<br>
-                        <h3>Columbus Circle</h3> - 10019, 10023<br>
-                        <h3>East Harlem</h3> - 10029, 10035<br>
-                        <h3>East Village</h3> - 10003, 10009<br>
-                        <h3>Financial District</h3> - 10004, 10005, 10006, 10007, 10038<br>
-                        <h3>Flatiron District</h3> - 10010<br>
-                        <h3>Fort George</h3> - 10040<br>
-                        <h3>Garment District</h3> - 10001, 10018<br>
-                        <h3>Governors Island</h3> - 10004<br>
-                        <h3>Gramercy</h3> - 10003, 10010<br>
-                        <h3>Greenwich Village</h3> - 10003, 10011, 10012, 10014<br>
-                        <h3>Hamilton Heights</h3> - 10031<br>
-                        <h3>Hell's Kitchen (Clinton)</h3> - 10018, 10019, 10036<br>
-                        <h3>Herald Square</h3> - 10001, 10018<br>
-                        <h3>Hudson Heights</h3> - 10033, 10040<br>
-                        <h3>Hudson Square</h3> - 10013<br>
-                        <h3>Hudson Yards</h3> - 10001<br>
-                        <h3>Inwood</h3> - 10034<br>
-                        <h3>Kips Bay</h3> - 10010, 10016<br>
-                        <h3>Koreatown</h3> - 10001<br>
-                        <h3>Lenox Hill</h3> - 10021, 10028, 10065, 10075<br>
-                        <h3>Lincoln Square</h3> - 10023, 10024, 10069<br>
-                        <h3>Little Italy</h3> - 10013<br>
-                        <h3>Lower East Side</h3> - 10002<br>
-                        <h3>Madison Square</h3> - 10010<br>
-                        <h3>Manhattan Valley</h3> - 10025<br>
-                        <h3>Manhattanville</h3> - 10027<br>
-                        <h3>Marble Hill</h3> - 10463<br>
-                        <h3>Midtown East</h3> - 10017, 10022<br>
-                        <h3>Midtown West</h3> - 10018, 10019, 10036<br>
-                        <h3>Morningside Heights</h3> - 10025, 10027<br>
-                        <h3>Murray Hill</h3> - 10016<br>
-                        <h3>NoHo</h3> - 10003, 10012<br>
-                        <h3>NoMad</h3> - 10001, 10010, 10016<br>
-                        <h3>Nolita</h3> - 10012<br>
-                        <h3>Riverside South</h3> - 10023, 10069<br>
-                        <h3>Rockefeller Center</h3> - 10020, 10111, 10112<br>
-                        <h3>Roosevelt Island</h3> - 10044<br>
-                        <h3>Seaport District</h3> - 10038<br>
-                        <h3>SoHo</h3> - 10012, 10013<br>
-                        <h3>South Street Seaport</h3> - 10038<br>
-                        <h3>Stuyvesant Town</h3> - 10009<br>
-                        <h3>Sugar Hill</h3> - 10031, 10039<br>
-                        <h3>Sutton Place</h3> - 10022<br>
-                        <h3>Theater District</h3> - 10018, 10019, 10036<br>
-                        <h3>Times Square</h3> - 10018, 10036<br>
-                        <h3>Tribeca</h3> - 10007, 10013<br>
-                        <h3>Tudor City</h3> - 10017<br>
-                        <h3>Turtle Bay</h3> - 10017, 10022<br>
-                        <h3>Union Square</h3> - 10003<br>
-                        <h3>Upper East Side</h3> - 10021, 10028, 10065, 10075, 10128<br>
-                        <h3>Upper West Side</h3> - 10023, 10024, 10025, 10069<br>
-                        <h3>Washington Heights</h3> - 10032, 10033, 10040<br>
-                        <h3>West Harlem</h3> - 10027, 10031<br>
-                        <h3>West Village</h3> - 10014<br>
-                        <h3>Yorkville</h3> - 10021, 10028, 10128<br>
+                        <div class="neighborhood-item">
+                            <h3>Alphabet City</h3>
+                            <h4>10009</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Battery Park City</h3>
+                            <h4>10280, 10281, 10282</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Bloomingdale</h3>
+                            <h4>10024, 10025</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Bowery</h3>
+                            <h4>10002, 10012, 10013</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Bryant Park</h3>
+                            <h4>10018</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Carnegie Hill</h3>
+                            <h4>10128</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Central Harlem</h3>
+                            <h4>10026, 10027, 10030, 10037, 10039</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Central Park South</h3>
+                            <h4>10019</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Chelsea</h3>
+                            <h4>10001, 10011</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Chinatown</h3>
+                            <h4>10002, 10013, 10038</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Civic Center</h3>
+                            <h4>10007, 10038</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Columbus Circle</h3>
+                            <h4>10019, 10023</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>East Harlem</h3>
+                            <h4>10029, 10035</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>East Village</h3>
+                            <h4>10003, 10009</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Financial District</h3>
+                            <h4>10004, 10005, 10006, 10007, 10038</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Flatiron District</h3>
+                            <h4>10010</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Fort George</h3>
+                            <h4>10040</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Garment District</h3>
+                            <h4>10001, 10018</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Governors Island</h3>
+                            <h4>10004</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Gramercy</h3>
+                            <h4>10003, 10010</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Greenwich Village</h3>
+                            <h4>10003, 10011, 10012, 10014</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Hamilton Heights</h3>
+                            <h4>10031</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Hell's Kitchen (Clinton)</h3>
+                            <h4>10018, 10019, 10036</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Herald Square</h3>
+                            <h4>10001, 10018</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Hudson Heights</h3>
+                            <h4>10033, 10040</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Hudson Square</h3>
+                            <h4>10013</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Hudson Yards</h3>
+                            <h4>10001</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Inwood</h3>
+                            <h4>10034</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Kips Bay</h3>
+                            <h4>10010, 10016</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Koreatown</h3>
+                            <h4>10001</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Lenox Hill</h3>
+                            <h4>10021, 10028, 10065, 10075</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Lincoln Square</h3>
+                            <h4>10023, 10024, 10069</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Little Italy</h3>
+                            <h4>10013</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Lower East Side</h3>
+                            <h4>10002</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Madison Square</h3>
+                            <h4>10010</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Manhattan Valley</h3>
+                            <h4>10025</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Manhattanville</h3>
+                            <h4>10027</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Marble Hill</h3>
+                            <h4>10463</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Midtown East</h3>
+                            <h4>10017, 10022</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Midtown West</h3>
+                            <h4>10018, 10019, 10036</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Morningside Heights</h3>
+                            <h4>10025, 10027</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Murray Hill</h3>
+                            <h4>10016</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>NoHo</h3>
+                            <h4>10003, 10012</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>NoMad</h3>
+                            <h4>10001, 10010, 10016</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Nolita</h3>
+                            <h4>10012</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Riverside South</h3>
+                            <h4>10023, 10069</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Rockefeller Center</h3>
+                            <h4>10020, 10111, 10112</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Roosevelt Island</h3>
+                            <h4>10044</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Seaport District</h3>
+                            <h4>10038</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>SoHo</h3>
+                            <h4>10012, 10013</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>South Street Seaport</h3>
+                            <h4>10038</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Stuyvesant Town</h3>
+                            <h4>10009</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Sugar Hill</h3>
+                            <h4>10031, 10039</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Sutton Place</h3>
+                            <h4>10022</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Theater District</h3>
+                            <h4>10018, 10019, 10036</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Times Square</h3>
+                            <h4>10018, 10036</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Tribeca</h3>
+                            <h4>10007, 10013</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Tudor City</h3>
+                            <h4>10017</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Turtle Bay</h3>
+                            <h4>10017, 10022</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Union Square</h3>
+                            <h4>10003</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Upper East Side</h3>
+                            <h4>10021, 10028, 10065, 10075, 10128</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Upper West Side</h3>
+                            <h4>10023, 10024, 10025, 10069</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Washington Heights</h3>
+                            <h4>10032, 10033, 10040</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>West Harlem</h3>
+                            <h4>10027, 10031</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>West Village</h3>
+                            <h4>10014</h4>
+                        </div>
+                        <div class="neighborhood-item">
+                            <h3>Yorkville</h3>
+                            <h4>10021, 10028, 10128</h4>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -1399,25 +1608,25 @@
                     <h4>Washing Machine Repair Services in Manhattan, New York</h4>
                     <div class="appliance-services-container">
                         <ul class="appliance-services-list">
-                            <li><a href="#washerGeneralContent" class="footer-link">Washing Machine Repair</a></li>
-                            <li><a href="#frontLoadWasherContent" class="footer-link">Front Load Washer Repair</a></li>
-                            <li><a href="#topLoadWasherContent" class="footer-link">Top Load Washer Repair</a></li>
-                            <li><a href="#washerDryerComboContent" class="footer-link">Washer Dryer Combo Repair</a></li>
+                            <li><a href="#washerGeneralButton" class="footer-link">Washing Machine Repair</a></li>
+                            <li><a href="#frontLoadWasherButton" class="footer-link">Front Load Washer Repair</a></li>
+                            <li><a href="#topLoadWasherButton" class="footer-link">Top Load Washer Repair</a></li>
+                            <li><a href="#washerDryerComboButton" class="footer-link">Washer Dryer Combo Repair</a></li>
                         </ul>
                         <ul class="appliance-services-list">
-                            <li><a href="#residentialWasherContent" class="footer-link">Residential Washer Repair</a></li>
-                            <li><a href="#commercialWasherContent" class="footer-link">Commercial Washer Repair</a></li>
-                            <li><a href="#portableWasherContent" class="footer-link">Portable Washer Repair</a></li>
-                            <li><a href="#stackedWasherContent" class="footer-link">Stacked Laundry Center Washer Repair</a></li>
+                            <li><a href="#residentialWasherButton" class="footer-link">Residential Washer Repair</a></li>
+                            <li><a href="#commercialWasherButton" class="footer-link">Commercial Washer Repair</a></li>
+                            <li><a href="#portableWasherButton" class="footer-link">Portable Washer Repair</a></li>
+                            <li><a href="#stackedWasherButton" class="footer-link">Stacked Laundry Center Washer Repair</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="footer-section">
                     <h4>Contact Info (Manhattan, New York Office)</h4>
-                    <p class="phone-link"><span class="icon">📞</span> <a href="tel:+17187171706">+1 (718) 717-1706</a></p>
+                    <p class="phone-link">📞 <a href="tel:+17187171706">+1 (718) 717-1706</a></p>
                     <p>Email: <a href="mailto:info@washingmachinerepairspecialist.com">info@washingmachinerepairspecialist.com</a></p>
                     <p>Address: 401 Park Ave South, New York, NY 10016 (Serving Manhattan, New York)</p>
-                    <p class="hours-info"><span class="icon">🕒</span> Hours: 7 days a week, 7am-6pm for Manhattan, New York</p>
+                    <p class="hours-info">🕒 Hours: 7 days a week, 7am-6pm for Manhattan, New York</p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -1446,28 +1655,59 @@
             this.setAttribute('aria-expanded', isExpanded);
         });
 
-        document.querySelectorAll('nav ul li a, .footer-link').forEach(anchor => {
+        // Main navigation links - smooth scroll
+        document.querySelectorAll('nav ul li a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                const href = anchor.getAttribute('href');
-                // Check if the href starts with '#' and is not just '#' (which would cause a reload)
+                const href = this.getAttribute('href');
                 if (href && href.startsWith('#') && href.length > 1) {
-                    e.preventDefault(); // Prevent default link behavior (page reload)
+                    e.preventDefault();
                     const targetId = href.substring(1);
                     const targetElement = document.getElementById(targetId);
                     if (targetElement) {
                         targetElement.scrollIntoView({ behavior: 'smooth' });
-                        // Optional: Update aria-current for active navigation link
                         document.querySelectorAll('nav ul li a').forEach(link => {
                             link.removeAttribute('aria-current');
                         });
-                        if (this.closest('nav')) {
-                            this.setAttribute('aria-current', 'page');
-                        }
+                        this.setAttribute('aria-current', 'page');
                     }
-                    // Close mobile nav if open
                     document.getElementById('nav-menu').classList.remove('active');
                     document.getElementById('hamburger').classList.remove('active');
                     document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+
+        // Footer appliance service links - scroll to #services AND activate specific content
+        document.querySelectorAll('.footer-section.appliance-services .appliance-services-list a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); // Prevent default link behavior
+
+                const targetButtonId = this.getAttribute('href').substring(1); // Get the ID of the button to click (e.g., 'washerGeneralButton')
+                const targetButton = document.getElementById(targetButtonId);
+
+                if (targetButton) {
+                    // 1. Scroll to the main #services section
+                    const servicesSection = document.getElementById('services');
+                    if (servicesSection) {
+                        servicesSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+
+                    // 2. Click the corresponding service button to expand its content
+                    // This is delayed slightly to allow for scroll animation to start/finish
+                    setTimeout(() => {
+                        // Ensure the main services section is active first
+                        document.getElementById('servicesContent').classList.add('active');
+
+                        // Then, toggle the specific service detail
+                        if (targetButton.click) { // Check if the element has a click method (it's a button)
+                            targetButton.click(); // Programmatically click the button
+                        } else { // Fallback if it's not directly a button, or click() isn't reliable
+                            const targetContentId = targetButton.getAttribute('data-target-content');
+                            if (targetContentId) {
+                                toggleSection(targetContentId); // Call toggleSection with the content ID
+                            }
+                        }
+                    }, 500); // Adjust delay as needed for smooth UX
                 }
             });
         });
@@ -1486,34 +1726,34 @@
             const serviceDetails = ['washerGeneralContent', 'frontLoadWasherContent', 'topLoadWasherContent', 'washerDryerComboContent', 'residentialWasherContent', 'commercialWasherContent', 'portableWasherContent', 'stackedWasherContent'];
 
             if (serviceDetails.includes(id)) {
+                // Deactivate all other service details first
                 document.querySelectorAll('.service-detail').forEach(detail => {
                     if (detail.id !== id) {
                         detail.classList.remove('active');
-                        const learnMoreButton = detail.querySelector('.cta-button[id$="DropdownButton"]');
-                        if (learnMoreButton) {
-                           const originalLearnMoreText = learnMoreButton.getAttribute('data-original-text-dropdown');
-                           const correspondingDropdown = document.getElementById(learnMoreButton.id.replace('Button',''));
-                           if (originalLearnMoreText && learnMoreButton.textContent !== originalLearnMoreText) {
-                               learnMoreButton.textContent = originalLearnMoreText;
-                               if(correspondingDropdown) correspondingDropdown.style.display = 'none';
-                           } else if (!originalLearnMoreText && learnMoreButton.textContent === "Show Less") {
-                                // This condition handles cases where data-original-text-dropdown wasn't set but it's currently "Show Less"
-                                learnMoreButton.textContent = "Learn More";
-                                if(correspondingDropdown) correspondingDropdown.style.display = 'none';
-                           }
+                        const associatedButton = document.querySelector(`button[onclick*='${detail.id}']`);
+                        if (associatedButton) {
+                            associatedButton.classList.remove('active');
+                            // Also close its "Learn More" dropdown if open
+                            const dropdownId = associatedButton.id.replace('Button', 'Dropdown');
+                            const dropdown = document.getElementById(dropdownId);
+                            if (dropdown && dropdown.style.display === "block") {
+                                dropdown.style.display = "none";
+                                const dropdownButton = dropdown.previousElementSibling;
+                                if (dropdownButton) dropdownButton.textContent = dropdownButton.getAttribute('data-original-text-dropdown') || "Learn More";
+                            }
                         }
                     }
                 });
 
                 const content = document.getElementById(id);
-                const button = content.previousElementSibling;
+                const button = document.querySelector(`button[onclick*='${id}']`); // Get the button that triggers this content
 
                 if (content.classList.contains('active')) {
                     content.classList.remove('active');
-                    button.classList.remove('active');
+                    if (button) button.classList.remove('active');
                 } else {
                     content.classList.add('active');
-                    button.classList.add('active');
+                    if (button) button.classList.add('active');
                 }
                 return;
             }
@@ -1558,15 +1798,19 @@
             var button = dropdown.previousElementSibling;
             var originalButtonText = button.getAttribute('data-original-text-dropdown') || "Learn More";
 
-            if (dropdown.style.display === "none" || dropdown.style.display === "") {
-                document.querySelectorAll('.service-detail .dropdown-content').forEach(function(otherDropdown) {
-                    if (otherDropdown.id !== id && otherDropdown.style.display === "block") {
-                        otherDropdown.style.display = "none";
-                        var otherButton = otherDropdown.previousElementSibling;
-                        var otherOriginalText = otherButton.getAttribute('data-original-text-dropdown') || "Learn More";
-                        otherButton.textContent = otherOriginalText;
+            // Close all other dropdowns within service details if they are open
+            document.querySelectorAll('.service-detail .dropdown-content').forEach(function(otherDropdown) {
+                if (otherDropdown.id !== id && otherDropdown.style.display === "block") {
+                    otherDropdown.style.display = "none";
+                    var otherButton = otherDropdown.previousElementSibling;
+                    if (otherButton) {
+                        otherButton.textContent = otherButton.getAttribute('data-original-text-dropdown') || "Learn More";
                     }
-                });
+                }
+            });
+
+
+            if (dropdown.style.display === "none" || dropdown.style.display === "") {
                 dropdown.style.display = "block";
                 if(button.textContent !== "Show Less") button.setAttribute('data-original-text-dropdown', button.textContent);
                 button.textContent = "Show Less";
@@ -1607,6 +1851,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
+            // Keep the initial service content active on load
             document.getElementById('servicesContent').classList.add('active');
 
             const form = document.getElementById('contactForm');
