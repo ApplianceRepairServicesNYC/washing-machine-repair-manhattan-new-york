@@ -369,12 +369,6 @@
             margin: 1rem auto;
             max-width: 700px;
         }
-        #guarantee-policy .section-content ul li {
-            position: relative;
-            padding-left: 1.8rem;
-            margin-bottom: 0.8rem;
-            line-height: 1.5;
-        }
         #guarantee-policy .section-content ul li::before {
             content: "✓";
             position: absolute;
@@ -1608,16 +1602,16 @@
                     <h4>Washing Machine Repair Services in Manhattan, New York</h4>
                     <div class="appliance-services-container">
                         <ul class="appliance-services-list">
-                            <li><a href="#washerGeneralButton" class="footer-link">Washing Machine Repair</a></li>
-                            <li><a href="#frontLoadWasherButton" class="footer-link">Front Load Washer Repair</a></li>
-                            <li><a href="#topLoadWasherButton" class="footer-link">Top Load Washer Repair</a></li>
-                            <li><a href="#washerDryerComboButton" class="footer-link">Washer Dryer Combo Repair</a></li>
+                            <li><a href="#services" data-target-button-id="washerGeneralButton" class="footer-service-link">Washing Machine Repair</a></li>
+                            <li><a href="#services" data-target-button-id="frontLoadWasherButton" class="footer-service-link">Front Load Washer Repair</a></li>
+                            <li><a href="#services" data-target-button-id="topLoadWasherButton" class="footer-service-link">Top Load Washer Repair</a></li>
+                            <li><a href="#services" data-target-button-id="washerDryerComboButton" class="footer-service-link">Washer Dryer Combo Repair</a></li>
                         </ul>
                         <ul class="appliance-services-list">
-                            <li><a href="#residentialWasherButton" class="footer-link">Residential Washer Repair</a></li>
-                            <li><a href="#commercialWasherButton" class="footer-link">Commercial Washer Repair</a></li>
-                            <li><a href="#portableWasherButton" class="footer-link">Portable Washer Repair</a></li>
-                            <li><a href="#stackedWasherButton" class="footer-link">Stacked Laundry Center Washer Repair</a></li>
+                            <li><a href="#services" data-target-button-id="residentialWasherButton" class="footer-service-link">Residential Washer Repair</a></li>
+                            <li><a href="#services" data-target-button-id="commercialWasherButton" class="footer-service-link">Commercial Washer Repair</a></li>
+                            <li><a href="#services" data-target-button-id="portableWasherButton" class="footer-service-link">Portable Washer Repair</a></li>
+                            <li><a href="#services" data-target-button-id="stackedWasherButton" class="footer-service-link">Stacked Laundry Center Washer Repair</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1655,21 +1649,51 @@
             this.setAttribute('aria-expanded', isExpanded);
         });
 
-        // Main navigation links - smooth scroll
-        document.querySelectorAll('nav ul li a').forEach(anchor => {
+        // Main navigation links and Quick Links in footer - smooth scroll to section ID
+        document.querySelectorAll('nav ul li a, .footer-section.quick-links .quick-links-list a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
-                if (href && href.startsWith('#') && href.length > 1) {
+                if (href && href.startsWith('#') && href.length > 1) { // Ensure it's a hash link and not just '#'
                     e.preventDefault();
                     const targetId = href.substring(1);
                     const targetElement = document.getElementById(targetId);
                     if (targetElement) {
                         targetElement.scrollIntoView({ behavior: 'smooth' });
-                        document.querySelectorAll('nav ul li a').forEach(link => {
-                            link.removeAttribute('aria-current');
-                        });
-                        this.setAttribute('aria-current', 'page');
+                        // Only update aria-current for main nav links
+                        if (this.closest('nav')) {
+                            document.querySelectorAll('nav ul li a').forEach(link => {
+                                link.removeAttribute('aria-current');
+                            });
+                            this.setAttribute('aria-current', 'page');
+                        }
+
+                        // Also ensure the main section's content is open if applicable
+                        // This prevents main content areas from being collapsed when a quick link takes you to them.
+                        const contentIdMap = {
+                            'services': 'servicesContent',
+                            'service-areas': 'serviceAreasContent',
+                            'brands': 'brandsContent',
+                            'additional-services': 'additionalServicesContent',
+                            'reviews': 'reviewsContent',
+                            'about': 'aboutContent',
+                            'guarantee-policy': 'guaranteePolicyContent',
+                            // 'contact' section doesn't have a toggleable content div in this structure
+                        };
+                        const contentToActivateId = contentIdMap[targetId];
+                        if (contentToActivateId) {
+                            const contentElement = document.getElementById(contentToActivateId);
+                            if (contentElement && !contentElement.classList.contains('active')) {
+                                contentElement.classList.add('active');
+                                // Also ensure its button state reflects being active
+                                const buttonForContent = contentElement.previousElementSibling; // This is a common pattern for your structure
+                                if (buttonForContent && buttonForContent.classList.contains('cta-button')) {
+                                    buttonForContent.textContent = "Show Less";
+                                    buttonForContent.classList.add('active');
+                                }
+                            }
+                        }
                     }
+                    // Close mobile nav if open
                     document.getElementById('nav-menu').classList.remove('active');
                     document.getElementById('hamburger').classList.remove('active');
                     document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
@@ -1682,10 +1706,10 @@
             anchor.addEventListener('click', function (e) {
                 e.preventDefault(); // Prevent default link behavior
 
-                const targetButtonId = this.getAttribute('href').substring(1); // Get the ID of the button to click (e.g., 'washerGeneralButton')
-                const targetButton = document.getElementById(targetButtonId);
+                const targetServiceButtonId = this.getAttribute('data-target-button-id'); // Get the ID of the button to click (e.g., 'washerGeneralButton')
+                const targetServiceButton = document.getElementById(targetServiceButtonId);
 
-                if (targetButton) {
+                if (targetServiceButton) {
                     // 1. Scroll to the main #services section
                     const servicesSection = document.getElementById('services');
                     if (servicesSection) {
@@ -1695,18 +1719,12 @@
                     // 2. Click the corresponding service button to expand its content
                     // This is delayed slightly to allow for scroll animation to start/finish
                     setTimeout(() => {
-                        // Ensure the main services section is active first
+                        // Ensure the main servicesContent div is active
                         document.getElementById('servicesContent').classList.add('active');
 
-                        // Then, toggle the specific service detail
-                        if (targetButton.click) { // Check if the element has a click method (it's a button)
-                            targetButton.click(); // Programmatically click the button
-                        } else { // Fallback if it's not directly a button, or click() isn't reliable
-                            const targetContentId = targetButton.getAttribute('data-target-content');
-                            if (targetContentId) {
-                                toggleSection(targetContentId); // Call toggleSection with the content ID
-                            }
-                        }
+                        // Programmatically click the service button to toggle its content
+                        // This should trigger its associated toggleSection
+                        targetServiceButton.click();
                     }, 500); // Adjust delay as needed for smooth UX
                 }
             });
